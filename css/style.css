@@ -1,6 +1,8 @@
+
 *{
   box-sizing: border-box;
-  font-family:cursive;
+ background-color: moccasin; 
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
  
 }
 
@@ -12,45 +14,47 @@ body{
 h1{
   color: indianred;
   text-align: center;
-  font-family:cursive;
+  
 }
 #Sales table th{
   border-style: solid; 
   border-color: black;
   padding: 8px;
-  font-family:cursive;
+  
   white-space:pre-wrap;
   text-align: center;
+  border-radius: 10px;
+  background-color:lightcoral;
   
 
 }
 
-#Sales table tr{
+#Sales table tr td{
   background-color:grey; 
   color: #fff;
   border-radius: inherit;
   text-align: center;
-
+  font-family: 'Athiti', sans-serif;
+  border-radius: 10px;
 }
 
 
-#Sales table tr:nth-child(1)  {
-    background-color:indianred;
-    padding-top: 12px;
-  padding-bottom: 12px;
-  
-}
 
-#Sales table tr:nth-child(7)  {
+
+#Sales table tr  {
   background-color:indianred;
   padding-top: 12px;
 padding-bottom: 12px;
 
 }
+.salesheader{
+  justify-content: space-around;
+}
 
 .locations {
   color: indianred;
   clear: both;
+  font-family: 'Noto Serif', serif
 }
  .intro{
    width: 50%;
@@ -62,13 +66,15 @@ padding-bottom: 12px;
    padding: 20px;
    float: left;
  }
- .sales{
+ .sales, .home{
 text-decoration:none;
 float: right;
 color: indianred;
 font-size: x-large;
+font-family: 'Akaya Telivigala', cursive;
 
  }
+
 
  footer{
   clear: both;

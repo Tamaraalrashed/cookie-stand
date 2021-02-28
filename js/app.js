@@ -160,48 +160,55 @@ const footer = function () {
   tr1Element.appendChild( th1Element );
   th1Element.textContent = 'Totals';
   for( let i = 0; i < workHours.length; i++ ) {
-    const td2Element=document.createElement( 'td' );
-    tr1Element.appendChild( td2Element );
+    const th2Element=document.createElement( 'th' );
+    tr1Element.appendChild( th2Element );
     let totalCookies=0;
     for ( let j = 0; j < City.allCity.length; j++ ) {
       totalCookies += parseInt( City.allCity[j].noOfCookies[i] );
 
     }
-    td2Element.textContent= totalCookies;
+    th2Element.textContent= totalCookies;
     // td2Element.textContent = `${seattle.noOfCookies[i]+tokyo.noOfCookies[i]+dubai.noOfCookies[i]+Paris.noOfCookies[i]+Lima.noOfCookies[i]}`;
   }
-  const td3Element=document.createElement( 'td' );
-  tr1Element.appendChild( td3Element );
-  td3Element.textContent = `${seattle.totalDialy+tokyo.totalDialy+dubai.totalDialy+Paris.totalDialy+Lima.totalDialy}`;
+  const th3Element=document.createElement( 'th' );
+  tr1Element.appendChild( th3Element );
+  let totalOfTotals =0;
+  for ( let i=0; i < City.allCity.length; i++ ) {
+    totalOfTotals += City.allCity[i].totalDialy;
+
+  }
+
+  th3Element.textContent = totalOfTotals;
 };
 
 footer();
 
 
-
-
-
+// let text = 'please enter the maximu value more than minimum value.';
 
 const formElement = document.getElementById( 'addNewCity' );
 formElement.addEventListener( 'submit', function( event ) {
   event.preventDefault();
   const cityName = event.target.city_name.value;
   const minOfCustomers = event.target.minOfCustomers.value;
+
   const maxOfCustomers = event.target.maxOfCustomers.value;
+
   const averAge = event.target.averAge.value;
+  if ( Number( minOfCustomers ) >= Number( maxOfCustomers ) ){
+    alert( 'Please enter the value of maximum number greater than minimum number' );
+  }
+  else{
+    document.getElementById( 'myTable' ).removeChild( document.getElementById( 'myTable' ).lastChild );
+    const city = new City ( cityName, minOfCustomers, maxOfCustomers, averAge );
+    formElement.reset();
+    console.log( city.noOfCustomersHourly );
 
+    city.getCookies();
+    city.render();
 
-  document.getElementById( 'myTable' ).removeChild( document.getElementById( 'myTable' ).lastChild );
-  const city = new City ( cityName, minOfCustomers, maxOfCustomers, averAge );
-  formElement.reset();
-  console.log( city.noOfCustomersHourly );
-
-  city.getCookies();
-  city.render();
-  console.log( city.noOfCustomersHourly );
-  // document.getElementById( 'myTable' ).deleteRow ( 6 );
-
-  footer();
+    footer();
+  }
 
 } );
 
